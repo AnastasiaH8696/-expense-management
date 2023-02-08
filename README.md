@@ -1,2 +1,2 @@
-# -expense-management
+# expense-management
 Simple Expense Management
