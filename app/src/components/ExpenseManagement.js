@@ -1,34 +1,29 @@
 import React from "react";
 import ExpensesList from "./ExpensesList";
 import Report from "./Report";
-import { CATEGORIES } from "../consts/Categories";
+import { AsyncLocalStorage } from "../storage/AsyncLocalStorage";
 
 class ExpenseManagement extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      //This is just a placeholder! will be updated!  
-      expenses: [
-        {
-          title: "expense1",
-          price: "price1",
-          category: CATEGORIES[0],
-          date: "date1",
-        },
-        {
-          title: "expense2",
-          price: "price2",
-          category: CATEGORIES[1],
-          date: "date2",
-        },
-      ],
-    };
+    this.state = { expenses: [] };
+  }
+
+  componentDidMount() {
+    AsyncLocalStorage.getItem("expenses").then((expenses) => {
+      this.setState({ expenses });
+    });
   }
 
   render() {
+    const { expenses } = this.state;
     return (
       <div className="expense-management">
-        <ExpensesList expenses={this.state.expenses} />
+        {expenses.length === 0 ? (
+          <p>Loading Data...</p>
+        ) : (
+          <ExpensesList expenses={JSON.parse(expenses)} />
+        )}
         <Report />
       </div>
     );
