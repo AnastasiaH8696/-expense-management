@@ -15,7 +15,7 @@ class ExpensesList extends React.Component {
         {this.state.expenses.map((expense) => (
         <Expense
           title={expense.title}
-          description={expense.description}
+          price={expense.price}
           category={expense.category}
           date={expense.date}
         />
