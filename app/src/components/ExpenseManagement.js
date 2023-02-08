@@ -19,8 +19,8 @@ class ExpenseManagement extends React.Component {
     const { expenses } = this.state;
     return (
       <div className="expense-management">
-        {expenses.length === 0 ? (
-          <p>Loading Data...</p>
+        {expenses == null || expenses.length === 0 ? (
+          <p></p>
         ) : (
           <ExpensesList expenses={JSON.parse(expenses)} />
         )}
