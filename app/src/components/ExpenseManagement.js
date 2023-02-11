@@ -15,16 +15,28 @@ class ExpenseManagement extends React.Component {
     });
   }
 
+  updateExpenses = (newExpenses) => {
+    this.setState({ expenses: newExpenses });
+  };
+
   render() {
     const { expenses } = this.state;
     return (
       <div className="expense-management">
         {expenses == null || expenses.length === 0 ? (
-          <p></p>
+          <div>
+            <ExpensesList expenses={[]} updateExpenses={this.updateExpenses} />
+            <p></p>
+          </div>
         ) : (
-          <ExpensesList expenses={JSON.parse(expenses)} />
+          <div>
+            <ExpensesList
+              expenses={JSON.parse(expenses)}
+              updateExpenses={this.updateExpenses}
+            />
+            <Report expenses={JSON.parse(expenses)} />
+          </div>
         )}
-        <Report />
       </div>
     );
   }
