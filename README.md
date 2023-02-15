@@ -2,6 +2,8 @@
 
 Get organized with a simple expense management tool!
 
+![Screenshot 2023-02-15 142614](https://user-images.githubusercontent.com/53013989/219028524-501cca9c-2e78-4640-993c-aa0fc42d6527.png)
+
 ## Features
 
 Using the app, you will be able to manage your personal expenses by:
