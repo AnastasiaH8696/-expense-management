@@ -1,3 +1,12 @@
+/*
+----- Developers info -----
+Dev1 name: Anastasia Hamandritov
+Dev1 ID: 321924433
+
+Dev2 name: Shirel Bitan
+Dev2 ID: 209322395
+ */
+
 import React from "react";
 import { CATEGORIES } from "../consts/Categories";
 class NewExpense extends React.Component {
@@ -44,6 +53,16 @@ class NewExpense extends React.Component {
           />
         </div>
         <div className="col">
+          <input
+            type="date"
+            onChange={handleChange}
+            value={formInputData.date}
+            name="date"
+            className="form-control"
+            placeholder="Date"
+          />
+        </div>
+        <div className="col-auto">
           <input
             type="submit"
             onClick={handleSubmit}

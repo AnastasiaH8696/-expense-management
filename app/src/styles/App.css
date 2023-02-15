@@ -38,8 +38,22 @@
 }
 
 .expense-management {
-  margin-top: 200px;
-  margin-left: 350px;
+  margin-top: 175px;
+  margin-left: 475px;
+}
+
+.form-row {
+  margin-bottom: 30px;
+}
+
+table {
+  margin-bottom: 30px !important;
+}
+
+h1 {
+  display: flex;
+  margin-bottom: 30px !important;
+  margin-left: 75px;
 }
 
 
