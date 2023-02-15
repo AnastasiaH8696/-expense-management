@@ -1,3 +1,12 @@
+/*
+----- Developers info -----
+Dev1 name: Anastasia Hamandritov
+Dev1 ID: 321924433
+
+Dev2 name: Shirel Bitan
+Dev2 ID: 209322395
+ */
+
 import React from "react";
 import NewExpense from "./NewExpense";
 import ExpensesTable from "./ExpenseTable";
@@ -10,11 +19,10 @@ class ExpensesList extends React.Component {
         title: "",
         category: "",
         price: "",
-        date: new Date().toLocaleDateString(),
+        date: "",
       },
     };
   }
-
 
   render() {
     const handleChange = (event) => {
@@ -25,28 +33,69 @@ class ExpensesList extends React.Component {
         },
       });
     };
-  
+
+    const isValidInput = (input) => {
+      if (
+        input.title === "" ||
+        input.category === "" ||
+        input.price === "" ||
+        input.date === ""
+      ) {
+        alert("Fill empty fields");
+        return false;
+      }
+
+      if (isNaN(input.price)) {
+        alert("Price is not a number");
+        return false;
+      }
+
+      if (!isNaN(input.price) && parseFloat(input.price) <= 0) {
+        alert("Price should be bigger than 0");
+        return false;
+      }
+
+      const inputDate = new Date(input.date);
+      const currentDate = new Date();
+
+      if (inputDate > currentDate) {
+        alert("You cannot use a future date");
+        return false;
+      }
+
+      return true;
+    };
+
     const handleSubmit = (event) => {
       event.preventDefault();
       const checkEmptyInput = !Object.values(this.state.formInputData).every(
         (res) => res === ""
       );
       if (checkEmptyInput) {
-        const newData = JSON.stringify([...this.props.expenses, this.state.formInputData]);
+        const newData = JSON.stringify([
+          ...this.props.expenses,
+          this.state.formInputData,
+        ]);
         const emptyInput = {
           title: "",
           category: "",
           price: "",
           date: new Date().toLocaleDateString(),
         };
-        this.setState({ formInputData: emptyInput });
-        AsyncLocalStorage.setItem("expenses", newData);
-        this.props.updateExpenses(newData);
+
+        if (isValidInput(this.state.formInputData)) {
+          this.setState({ formInputData: emptyInput });
+          AsyncLocalStorage.setItem("expenses", newData);
+          this.props.updateExpenses(newData);
+        }
+      } else {
+        alert("Fill empty fields");
       }
     };
 
     return (
       <React.Fragment>
+        <h1 class="display-3 text-center">Expense Management Tool</h1>
         <div className="container">
           <div className="row">
             <div className="col-sm-8">
