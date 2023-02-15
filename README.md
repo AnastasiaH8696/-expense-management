@@ -14,6 +14,8 @@ Using the app, you will be able to manage your personal expenses by:
 
 ## Demo
 
+https://user-images.githubusercontent.com/53013989/219031021-c621c76f-aea1-4537-9214-9bc507e12746.mp4
+
 ## How to run the app
 ### Pre-requisites
 ⭐ Make sure you have node installed on your machine
