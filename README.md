@@ -50,14 +50,14 @@ This app was built with the following technologies:
 ⭐ DB: Asynchronous Local Storage implementation
 
 ## Troubleshooting
-If you have node version lower than v17, please modify the package.json file by replacing:
-```
-"start": "react-scripts --openssl-legacy-provider start",
-"build": "react-scripts --openssl-legacy-provider build",
-```
-to this:
+If you have node version higher than v17, please modify the package.json file by replacing:
 ```
 "start": "react-scripts start",
 "build": "react-scripts build",
+```
+to this:
+```
+"start": "react-scripts --openssl-legacy-provider start",
+"build": "react-scripts --openssl-legacy-provider build",
 ```
 
